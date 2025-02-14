@@ -1,0 +1,36 @@
+@startuml
+actor Alice
+actor Bob
+participant "Login System" as LS
+participant "Food Party System" as FPS
+
+Alice -> LS: Enter login credentials
+LS -> Alice: Authentication successful
+
+Alice -> FPS: Create Food Party Event
+FPS -> Alice: Provide event details
+
+Alice -> FPS: Set event name
+Alice -> FPS: Set event date
+Alice -> FPS: Add event description
+
+FPS -> FPS: Save event details
+Alice -> FPS: Confirmation of event creation
+FPS -> "Food Party Events": Add event to list
+
+
+
+Bob -> LS: Enter login credentials
+LS -> Bob: Authentication successful
+
+Bob -> FPS: Request list of available food party events
+FPS -> Bob: Send list of available events
+
+Bob -> FPS: Join selected food party event
+Bob -> FPS: Declare food he is bringing
+
+
+
+Bob -> FPS: Confirmation of event joining
+FPS -> "Food Party Events": Add Bob to attendees with declared food
+@enduml
